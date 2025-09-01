@@ -46,6 +46,7 @@ const App = () => {
         return;
       }
       setMovieList(data.results || []);
+
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Fetching movies failed');
@@ -66,6 +67,33 @@ const App = () => {
                 <h1>Find <span className='text-gradient'>Movies</span> you'll love to watch</h1>
                 <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
               </header>
+
+              <section class="trending">
+                <h2>Trending Movies</h2>
+                
+                <ul>
+                  <li>
+                    <p>1</p>
+                    <img src="movie1.jpeg" alt="Movie Title" />
+                  </li>
+                  <li>
+                    <p>2</p>
+                    <img src="movie2.jpeg" alt="Movie Title" />
+                  </li>
+                  <li>
+                    <p>3</p>
+                    <img src="movie3.jpeg" alt="Movie Title" />
+                  </li>
+                  <li>
+                    <p>3</p>
+                    <img src="movie4.jpeg" alt="Movie Title" />
+                  </li>
+                  <li>
+                    <p>3</p>
+                    <img src="movie5.jpeg" alt="Movie Title" />
+                  </li>
+                </ul>
+              </section>
               <section className='all-movies'>
                 <h2 className='mt-10'>All Movies</h2>
                 {isLoading ? ( <Spiner /> ) : errorMessage ? (<p className='text-red-500 text-base'>{errorMessage}</p>)
