@@ -68,7 +68,7 @@ const App = () => {
                 <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
               </header>
 
-              <section class="trending">
+              <section className="trending">
                 <h2>Trending Movies</h2>
                 
                 <ul>
