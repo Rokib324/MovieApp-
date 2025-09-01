@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const MovieCard = ({movie:{id, title, vote_average, poster_path, original_language, release_date}}) => {
+  const [imageError, setImageError] = useState(false);
+  
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const getImageSrc = () => {
+    if (imageError || !poster_path) {
+      return '/No-Poster.png';
+    }
+    return `https://image.tmdb.org/t/p/w500${poster_path}`;
+  };
+
   return (
     <div className='movie-card'>
-        <img src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : '/No-Poster.png'} alt={title} />
+        <img 
+          src={getImageSrc()} 
+          alt={title} 
+          onError={handleImageError}
+          loading="lazy"
+        />
         <div className='mt-4'>
             <h3>{title}</h3>
             <div className='content'>
                 <div className='rating'>
-                    <img src="star.svg" alt="star" />
+                    <img src="/star.svg" alt="star" />
                     <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
                 </div>
                 <span>•</span>
